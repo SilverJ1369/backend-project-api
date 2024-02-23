@@ -1,0 +1,2 @@
+class TimesuckEpisodeController < ApplicationController
+end
