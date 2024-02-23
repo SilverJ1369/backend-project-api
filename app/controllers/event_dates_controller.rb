@@ -9,6 +9,11 @@ class EventDatesController < ApplicationController
         end
     end
 
+    def index
+        event_dates = EventDate.all
+        render json: event_dates
+    end
+
     def event_date_params
         params.date_key = params[:year].to_s << params[:month].to_s << params[:day].to_s << params[:is_ad].to_s << params[:modifier].to_s
         params.require(:event_date).permit(:year, :month, :day, :is_ad, :modifier)

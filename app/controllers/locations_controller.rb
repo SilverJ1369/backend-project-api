@@ -16,6 +16,11 @@ class LocationsController < ApplicationController
         end
       end
     end
+
+    def index
+      locations = Location.all
+      render json: locations
+    end
   
     private
   

@@ -9,6 +9,10 @@ class CategoriesController < ApplicationController
         end
     end
 
+    def index
+        categories = Category.all
+        render json: categories
+    end
 
     private
 

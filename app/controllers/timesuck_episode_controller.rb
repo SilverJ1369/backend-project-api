@@ -9,6 +9,11 @@ class TimesuckEpisodeController < ApplicationController
         end
     end
 
+    def index
+        timesuck_episodes = TimesuckEpisode.all
+        render json: timesuck_episodes
+    end
+
     private
 
     def timesuck_episode_params

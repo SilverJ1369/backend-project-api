@@ -8,6 +8,10 @@ class MainTopicController < ApplicationController
     end
   end
 
+  def index
+    main_topics = MainTopic.all
+    render json: main_topics, include: [ :location, :category, :start_date, :end_date ]
+  end
 
   private
 

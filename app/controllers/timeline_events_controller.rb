@@ -9,8 +9,13 @@ class TimelineEventsController < ApplicationController
         end
     end
 
+    def index
+        timeline_events = TimelineEvent.all
+        render json: timeline_events
+    end
 
     private
+    
     def timeline_event_params
         params.require(:timeline_event).permit(:main_topic_id, :location_id, :details, :event_date_id, :is_graphic)
     end
