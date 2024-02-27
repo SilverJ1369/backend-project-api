@@ -1,11 +1,11 @@
 class TimesuckEpisodeController < ApplicationController
 
     def create
-        @timesuck_episode = TimesuckEpisode.new(timesuck_episode_params)
-        if @timesuck_episode.save
-            render json: @timesuck_episode, status: :created
+        timesuck_episode = TimesuckEpisode.new(timesuck_episode_params)
+        if timesuck_episode.save
+            render json: timesuck_episode, status: :created
         else
-            render json: @timesuck_episode.errors, status: :unprocessable_entity
+            render json: timesuck_episode.errors, status: :unprocessable_entity
         end
     end
 
