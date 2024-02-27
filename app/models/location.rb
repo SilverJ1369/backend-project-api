@@ -5,4 +5,6 @@ class Location < ApplicationRecord
     #validations
     validates :location_key, presence: true, uniqueness: true
     validates :country, presence: true
+
+    
 end
