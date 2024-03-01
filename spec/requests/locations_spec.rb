@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe LocationsController, type: :controller do
+RSpec.describe LocationsController, type: :requests do
 
   describe "POST #create" do
     context "with an existing location_key" do

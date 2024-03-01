@@ -26,7 +26,7 @@ require 'faker'
 10.times do
     category = Category.create(name: Faker::Lorem.word)
 
-    location = Location.create(location_key: Faker::Lorem.word, country: Faker::Address.country, state: Faker::Address.state, city: Faker::Address.city)
+    location = Location.create(country: Faker::Address.country, state: Faker::Address.state, city: Faker::Address.city)
     
     event_date_1 = EventDate.create(date_key: 'Some Name', year: 1, month: 1, day: 1, is_ad: true, modifier: 'Some Name');
 

@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-    #work on this!
+
     def create
       incoming_location_key = generate_location_key
       existing_location = Location.find_by(location_key: incoming_location_key)
@@ -16,6 +16,22 @@ class LocationsController < ApplicationController
       locations = Location.all
       render json: locations
     end
+
+    def show
+      render json: Location.find(params[:id])
+    end
+
+    def update
+      location = Location.find(params[:id])
+      new_location_key = generate_location_key
+      location.update(location_params.merge(location_key: new_location_key))
+      render json: location
+    end
+
+    def destroy
+      location = Location.find(params[:id])
+      location.destroy
+    end
   
     private
   
@@ -23,8 +39,8 @@ class LocationsController < ApplicationController
       params.require(:location).permit(:country, :state, :city)
     end
 
-    def generate_location_key()
-      return "#{location_params[:country]}-#{location_params[:state]}-#{location_params[:city]}"
+    def generate_location_key
+      return "#{location_params[:country]}#{location_params[:state]}#{location_params[:city]}"
     end
   
   end

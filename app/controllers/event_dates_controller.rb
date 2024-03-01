@@ -1,11 +1,14 @@
 class EventDatesController < ApplicationController
 
     def create
-        event_date = EventDate.new(event_date_params)
-        if event_date.save
-            render json: event_date, status: :created
+        incoming_event_date_key = generate_event_date_key
+        existing_event_date = EventDate.find_by(date_key: incoming_event_date_key)
+
+        if existing_event_date
+            render json: existing_event_date
         else
-            render json: event_date.errors, status: :unprocessable_entity
+            event_date = EventDate.new(event_date_params.merge(date_key: incoming_event_date_key))
+            render json: event_date if event_date.save
         end
     end
 
@@ -15,7 +18,10 @@ class EventDatesController < ApplicationController
     end
 
     def event_date_params
-        params.date_key = params[:year].to_s << params[:month].to_s << params[:day].to_s << params[:is_ad].to_s << params[:modifier].to_s
         params.require(:event_date).permit(:year, :month, :day, :is_ad, :modifier)
+    end
+
+    def generate_event_date_key
+        return "#{event_date_params[:year].to_s}#{event_date_params[:month].to_s}#{event_date_params[:day].to_s}#{event_date_params[:modifier]}"
     end
 end
