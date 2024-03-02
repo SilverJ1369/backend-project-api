@@ -1,5 +1,7 @@
 class EventDatesController < ApplicationController
 
+    before_action :find_event_date, only: [:show, :update, :destroy]
+
     def create
         incoming_event_date_key = generate_event_date_key
         existing_event_date = EventDate.find_by(date_key: incoming_event_date_key)
@@ -15,6 +17,26 @@ class EventDatesController < ApplicationController
     def index
         event_dates = EventDate.all
         render json: event_dates
+    end
+
+    def show
+        render json: event_date
+    end
+
+    def update
+        new_event_date_key = generate_event_date_key
+        event_date.update(event_date_params.merge(date_key: new_event_date_key))
+        render json: event_date
+    end
+
+    def destroy
+        event_date.destroy
+    end
+
+    private
+
+    def find_event_date
+        event_date = EventDate.find(params[:id])
     end
 
     def event_date_params
