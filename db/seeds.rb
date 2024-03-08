@@ -23,15 +23,20 @@
 # event1 = TimelineEvent.create(main_topic: nil, location: location, details: 'Some Details', event_date: event_date_1, is_graphic: false);
 require 'faker'
 # db/seeds.rb
-10.times do
-    category = Category.create(name: Faker::Lorem.word)
+category = Category.create(name: 'True Crime')
+category = Category.create(name: 'Historical')
+category = Category.create(name: 'Cult')
+category = Category.create(name: 'Motivational')
+category = Category.create(name: 'Scientific')
+category = Category.create(name: 'Random/Miscellaneous')
+5.times do
 
-    location = Location.create(country: Faker::Address.country, state: Faker::Address.state, city: Faker::Address.city)
+    location = Location.create(location_key: Faker::Lorem.word, country: Faker::Address.country, state: Faker::Address.state, city: Faker::Address.city)
     
-    event_date_1 = EventDate.create(date_key: 'Some Name', year: 1, month: 1, day: 1, is_ad: true, modifier: 'Some Name');
+    event_date_1 = EventDate.create(date_key: Faker::Lorem.word, year: Faker::Number.between(from: 1900, to: 1975), month: Faker::Number.between(from: 1, to: 12), day: Faker::Number.between(from: 1, to: 31), is_ad: true, modifier: 'Some Name');
 
-    event_date_2 = EventDate.create(date_key: 'Some Name', year: 2, month: 1, day: 1, is_ad: true, modifier: 'Some Name');
-    
+    event_date_2 = EventDate.create(date_key: Faker::Lorem.word, year: Faker::Number.between(from: 1976, to: 2024), month: Faker::Number.between(from: 1, to: 12), day: Faker::Number.between(from: 1, to: 31), is_ad: true, modifier: 'Some Name');
+
     main_topic = MainTopic.create(
         name: Faker::Lorem.word,
         location: location,
@@ -55,3 +60,4 @@ require 'faker'
         )
     end
 end
+
