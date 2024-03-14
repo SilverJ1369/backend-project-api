@@ -1,4 +1,4 @@
-class TimesuckEpisodeController < ApplicationController
+class TimesuckEpisodesController < ApplicationController
 
     before_action :find_timesuck_episode, only: [:show, :update, :destroy]
 

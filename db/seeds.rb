@@ -33,9 +33,9 @@ category = Category.create(name: 'Random/Miscellaneous')
 
     location = Location.create(location_key: Faker::Lorem.word, country: Faker::Address.country, state: Faker::Address.state, city: Faker::Address.city)
     
-    event_date_1 = EventDate.create(date_key: Faker::Lorem.word, year: Faker::Number.between(from: 1900, to: 1975), month: Faker::Number.between(from: 1, to: 12), day: Faker::Number.between(from: 1, to: 31), is_ad: true, modifier: 'Some Name');
+    event_date_1 = EventDate.create(date_key: Faker::Lorem.paragraph, year: Faker::Number.between(from: 1900, to: 1975), month: Faker::Number.between(from: 1, to: 12), day: Faker::Number.between(from: 1, to: 31), is_ad: true, modifier: 'Some Name');
 
-    event_date_2 = EventDate.create(date_key: Faker::Lorem.word, year: Faker::Number.between(from: 1976, to: 2024), month: Faker::Number.between(from: 1, to: 12), day: Faker::Number.between(from: 1, to: 31), is_ad: true, modifier: 'Some Name');
+    event_date_2 = EventDate.create(date_key: Faker::Lorem.paragraph, year: Faker::Number.between(from: 1976, to: 2024), month: Faker::Number.between(from: 1, to: 12), day: Faker::Number.between(from: 1, to: 31), is_ad: true, modifier: 'Some Name');
 
     main_topic = MainTopic.create(
         name: Faker::Lorem.word,

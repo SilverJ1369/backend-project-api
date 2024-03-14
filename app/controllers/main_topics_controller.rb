@@ -1,4 +1,4 @@
-class MainTopicController < ApplicationController
+class MainTopicsController < ApplicationController
   def create
     main_topic = MainTopic.new(main_topic_params)
     if main_topic.save
