@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :timeline_events
   resources :event_dates
   resources :timesuck_episodes
+
+  get 'timeline_events/search_by_main_topic/:maintopic_name', to: 'timeline_events#search_by_main_topic'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

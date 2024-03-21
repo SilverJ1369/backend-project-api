@@ -8,19 +8,6 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-# category = Category.create(name: 'Some Name');
-
-# event_date_1 = EventDate.create(date_key: 'Some Name', year: 1, month: 1, day: 1, is_ad: true, modifier: 'Some Name');
-
-# event_date_2 = EventDate.create(date_key: 'Some Name', year: 2, month: 1, day: 1, is_ad: true, modifier: 'Some Name');
-
-# location = Location.create(location_key: 'Some Name', country: 'Some Name', state: 'Some Name', city: 'Some Name');
-
-# episode = TimesuckEpisode.create(episode_number: 'Some Name', category: category);
-
-# topic = MainTopic.create(name: 'Some Name', timesuck_episodes: episode, location: location, category: category, start_date: event_date_1, end_date: event_date_2);
-
-# event1 = TimelineEvent.create(main_topic: nil, location: location, details: 'Some Details', event_date: event_date_1, is_graphic: false);
 require 'faker'
 # db/seeds.rb
 category = Category.create(name: 'True Crime')
