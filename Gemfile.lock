@@ -131,6 +131,7 @@ GEM
     nio4r (2.7.0)
     nokogiri (1.16.2-x86_64-linux)
       racc (~> 1.4)
+    pg (1.5.6)
     psych (5.1.2)
       stringio
     puma (6.4.2)
@@ -218,6 +219,7 @@ DEPENDENCIES
   debug
   factory_bot_rails
   faker
+  pg
   puma (>= 5.0)
   rack-cors
   rails (~> 7.1.3)
