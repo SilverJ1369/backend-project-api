@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_17_163406) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_17_162611) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -39,10 +42,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_17_163406) do
 
   create_table "main_topics", force: :cascade do |t|
     t.string "name"
-    t.integer "location_id"
-    t.integer "category_id"
-    t.integer "start_date_id"
-    t.integer "end_date_id"
+    t.bigint "location_id"
+    t.bigint "category_id"
+    t.bigint "start_date_id"
+    t.bigint "end_date_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_main_topics_on_category_id"
@@ -52,10 +55,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_17_163406) do
   end
 
   create_table "timeline_events", force: :cascade do |t|
-    t.integer "main_topic_id"
-    t.integer "location_id"
+    t.bigint "main_topic_id"
+    t.bigint "location_id"
     t.text "details"
-    t.integer "event_date_id"
+    t.bigint "event_date_id"
     t.boolean "is_graphic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -66,8 +69,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_17_163406) do
 
   create_table "timesuck_episodes", force: :cascade do |t|
     t.string "episode_number"
-    t.integer "category_id"
-    t.integer "main_topic_id"
+    t.bigint "category_id"
+    t.bigint "main_topic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_timesuck_episodes_on_category_id"
