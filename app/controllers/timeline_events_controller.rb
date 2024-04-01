@@ -12,12 +12,12 @@ class TimelineEventsController < ApplicationController
     def search_by_main_topic
         maintopic_name = params[:maintopic_name]
         timeline_events = TimelineEvent.joins(:main_topic).where(main_topic: { name: maintopic_name })
-        render json: timeline_events, include: [:event_date]
+        render json: timeline_events, include: [:event_date, :location, :main_topic]
     end
 
     def index
         timeline_events = TimelineEvent.all
-        render json: timeline_events, include: [:main_topics]
+        render json: timeline_events, include: [:main_topic]
     end
 
     def show
