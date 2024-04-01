@@ -3,7 +3,7 @@ module ServiceContract
         OpenStruct.new({ success?: true, payload: payload, errors: nil })
     end
 
-    def self.error(errors)
+    def self.errors(errors)
         OpenStruct.new({ success?: false, payload: nil, errors: errors })
     end
 end

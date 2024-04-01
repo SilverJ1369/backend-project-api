@@ -1,10 +1,10 @@
 class MainTopicsController < ApplicationController
   def create
-    main_topic = MainTopic.new(main_topic_params)
-    if main_topic.save
-      render json: main_topic, status: :created, include: [ :location, :category, :start_date, :end_date ]
+    result = MainTopicService::Base.create(main_topic_params)
+    if result.success?
+      render_success(payload: result.payload)
     else
-      render json: main_topic.errors, status: :unprocessable_entity
+      render_error(errors: result.errors)
     end
   end
 

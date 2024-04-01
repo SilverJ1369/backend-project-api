@@ -1,5 +1,18 @@
 module MainTopicService
     module Base
+        def self.create(params)
+            main_topic = MainTopic.new(params)
+            begin
+                main_topic.save!
+            rescue ActiveRecord::RecordInvalid => e
+                return ServiceContract.errors(e.message) unless main_topic.valid?
+            end
+
+            ServiceContract.success(main_topic)
+        end
+    end
+
+    module Search
         def self.search_by_name(params)
             search_name = params[:search_name]
             begin
