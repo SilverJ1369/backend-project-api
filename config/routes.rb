@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :admins, only: [:create]
   resources :main_topics, :categories
   resources :locations
   resources :timeline_events
