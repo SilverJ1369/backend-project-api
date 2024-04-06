@@ -1,7 +1,6 @@
 class AdminsController < ApplicationController
   def create
     admin = Admin.new(admin_params)
-    debugger
     if admin.save
       render json: admin, status: :created
     else
