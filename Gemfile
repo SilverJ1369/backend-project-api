@@ -37,6 +37,8 @@ gem "rack-cors"
 
 gem 'pg'
 
+gem 'jwt'
+
 gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do

@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  get 'sessions/create'
   resources :admins, only: [:create]
   resources :main_topics, :categories
   resources :locations
   resources :timeline_events
   resources :event_dates
   resources :timesuck_episodes
+  post '/login', to: 'sessions#create'
 
   get 'timeline_events/search_by_main_topic/:maintopic_name', to: 'timeline_events#search_by_main_topic'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
