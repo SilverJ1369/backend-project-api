@@ -30,20 +30,20 @@ class MainTopicsController < ApplicationController
     search_start_year = search_params[:search_start_year]
     search_end_year = search_params[:search_end_year]
     search_category = search_params[:search_category]
-    debugger
-
+    
     filtered_main_topics = MainTopic.all
-
+    
     if search_name.present?
       filtered_main_topics = filtered_main_topics.where("main_topics.name LIKE ?", "%#{search_name}%")
+      debugger
     end
   
     if search_start_year.present?
-      filtered_main_topics = filtered_main_topics.where("strftime('%Y', main_topics.start_date) >= ?", search_start_year)
+      filtered_main_topics = filtered_main_topics.joins(:start_date).where("event_dates.year >= ?", search_start_year)
     end
   
     if search_end_year.present?
-      filtered_main_topics = filtered_main_topics.where("strftime('%Y', main_topics.end_date) <= ?", search_end_year)
+      filtered_main_topics = filtered_main_topics.joins(:end_date).where("event_dates.year <= ?", search_end_year)
     end
   
     if search_category.present?
