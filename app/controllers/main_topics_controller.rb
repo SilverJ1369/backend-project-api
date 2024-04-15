@@ -48,7 +48,7 @@ class MainTopicsController < ApplicationController
     if search_category.present?
       filtered_main_topics = filtered_main_topics.joins(:category).where(categories: { name: search_category })
     end
-    render json: filtered_main_topics
+    render json: filtered_main_topics, include: [ :location, :category, :start_date, :end_date ]
   end
 
   private
