@@ -35,7 +35,6 @@ class MainTopicsController < ApplicationController
     
     if search_name.present?
       filtered_main_topics = filtered_main_topics.where("main_topics.name LIKE ?", "%#{search_name}%")
-      debugger
     end
   
     if search_start_year.present?
