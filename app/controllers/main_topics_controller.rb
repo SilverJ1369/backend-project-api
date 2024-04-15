@@ -25,6 +25,33 @@ class MainTopicsController < ApplicationController
     main_topic.destroy
   end
 
+  def search
+    search_name = search_params[:search_name]
+    search_start_year = search_params[:search_start_year]
+    search_end_year = search_params[:search_end_year]
+    search_category = search_params[:search_category]
+    
+    filtered_main_topics = MainTopic.all
+    
+    if search_name.present?
+      filtered_main_topics = filtered_main_topics.where("main_topics.name LIKE ?", "%#{search_name}%")
+      debugger
+    end
+  
+    if search_start_year.present?
+      filtered_main_topics = filtered_main_topics.joins(:start_date).where("event_dates.year >= ?", search_start_year)
+    end
+  
+    if search_end_year.present?
+      filtered_main_topics = filtered_main_topics.joins(:end_date).where("event_dates.year <= ?", search_end_year)
+    end
+  
+    if search_category.present?
+      filtered_main_topics = filtered_main_topics.joins(:category).where(categories: { name: search_category })
+    end
+    render json: filtered_main_topics
+  end
+
   private
 
   def find_main_topic
@@ -33,5 +60,9 @@ class MainTopicsController < ApplicationController
 
   def main_topic_params
     params.require(:main_topic).permit(:name, :start_date_id, :end_date_id, :location_id, :category_id)
+  end
+
+  def search_params
+    params.permit(:search_name, :search_start_year, :search_end_year, :search_category)
   end
 end

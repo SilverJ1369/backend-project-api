@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :event_dates
   resources :timesuck_episodes
   post '/login', to: 'sessions#create'
+  post '/search', to: 'main_topics#search'
 
   get 'timeline_events/search_by_main_topic/:maintopic_name', to: 'timeline_events#search_by_main_topic'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
